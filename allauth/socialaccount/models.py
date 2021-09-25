@@ -107,9 +107,10 @@ class SocialAccount(models.Model):
     last_login = models.DateTimeField(verbose_name=_("last login"), auto_now=True)
     date_joined = models.DateTimeField(verbose_name=_("date joined"), auto_now_add=True)
     extra_data = JSONField(verbose_name=_("extra data"), default=dict)
+    tag = app_settings.build_social_account_model_tag_field()
 
     class Meta:
-        unique_together = ("provider", "uid")
+        unique_together = ("provider", "uid", "tag")
         verbose_name = _("social account")
         verbose_name_plural = _("social accounts")
 
