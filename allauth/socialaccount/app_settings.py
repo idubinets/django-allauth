@@ -80,21 +80,21 @@ class AppSettings(object):
     @property
     def SOCIAL_ACCOUNT_TAG_FIELD_MODEL_CLASS(self):
         return self._setting(
-            "SOCIAL_ACCOUNT_TAG_FIELD_MODEL_CLASS",
+            "TAG_FIELD_MODEL_CLASS",
             "django.db.models.CharField",
         )
 
     @property
     def SOCIAL_ACCOUNT_TAG_FIELD_ARGS(self):
         return self._setting(
-            "SOCIAL_ACCOUNT_TAG_FIELD_ARGS",
+            "TAG_FIELD_ARGS",
             [],
         )
 
     @property
     def SOCIAL_ACCOUNT_TAG_FIELD_KWARGS(self):
         return self._setting(
-            "SOCIAL_ACCOUNT_TAG_FIELD_KWARGS",
+            "TAG_FIELD_KWARGS",
             {'max_length': 256, 'null': True, 'blank': True},
         )
 
