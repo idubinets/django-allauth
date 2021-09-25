@@ -32,6 +32,10 @@ class DefaultSocialAccountAdapter(object):
     def __init__(self, request=None):
         self.request = request
 
+    def create_social_account(self, request, *args, **kwargs):
+        from .models import SocialAccount
+        return SocialAccount(*args, **kwargs)
+
     def pre_social_login(self, request, sociallogin):
         """
         Invoked just after a user successfully authenticates via a
