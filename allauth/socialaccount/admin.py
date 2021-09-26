@@ -29,8 +29,8 @@ class SocialAppAdmin(admin.ModelAdmin):
 class SocialAccountAdmin(admin.ModelAdmin):
     search_fields = []
     raw_id_fields = ("user",)
-    list_display = ("user", "uid", "provider")
-    list_filter = ("provider",)
+    list_display = ("user", "uid", "provider", "tag")
+    list_filter = ("provider", "tag")
 
     def get_search_fields(self, request):
         base_fields = get_adapter().get_user_search_fields()

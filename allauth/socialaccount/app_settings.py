@@ -1,3 +1,5 @@
+from ..utils import import_attribute
+
 class AppSettings(object):
     def __init__(self, prefix):
         self.prefix = prefix
@@ -74,6 +76,33 @@ class AppSettings(object):
     @property
     def UID_MAX_LENGTH(self):
         return 191
+
+    @property
+    def SOCIAL_ACCOUNT_TAG_FIELD_MODEL_CLASS(self):
+        return self._setting(
+            "TAG_FIELD_MODEL_CLASS",
+            "django.db.models.CharField",
+        )
+
+    @property
+    def SOCIAL_ACCOUNT_TAG_FIELD_ARGS(self):
+        return self._setting(
+            "TAG_FIELD_ARGS",
+            [],
+        )
+
+    @property
+    def SOCIAL_ACCOUNT_TAG_FIELD_KWARGS(self):
+        return self._setting(
+            "TAG_FIELD_KWARGS",
+            {'max_length': 256, 'null': True, 'blank': True},
+        )
+
+    def build_social_account_model_tag_field(self):
+        return import_attribute(self.SOCIAL_ACCOUNT_TAG_FIELD_MODEL_CLASS)(
+            *self.SOCIAL_ACCOUNT_TAG_FIELD_ARGS,
+            **self.SOCIAL_ACCOUNT_TAG_FIELD_KWARGS
+        )
 
 
 # Ugly? Guido recommends this himself ...
